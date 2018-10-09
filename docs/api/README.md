@@ -52,6 +52,36 @@ For more advanced mounting techniques and for suggestions on how to mount in a n
 
 ## Endpoints
 
+[Get features](#get-all-features)
+
+[Create feature](#create-a-new-feature)
+
+[Retrieve feature](#retrieve-a-feature)
+
+[Delete feature](#delete-a-feature)
+
+[Clear feature](#clear-a-feature)
+
+[Boolean enable feature](#boolean-enable-a-feature)
+
+[Boolean disable feature](#boolean-disable-a-feature)
+
+[Enable Group](#enable-group)
+
+[Disable Group](#disable-group)
+
+[Enable Actor](#enable-actor)
+
+[Disable Actor](#disable-actor)
+
+[Enable Percentage of Actors](#enable-percentage-of-actors)
+
+[Disable Percentage of Actors](#disable-percentage-of-actors)
+
+[Enable Percentage of Time](#enable-percentage-of-time)
+
+[Disable Percentage of Time](#disable-percentage-of-time)
+
 **Note:** Example CURL requests below assume a mount point of `/flipper/api`.
 
 ### Get all features
