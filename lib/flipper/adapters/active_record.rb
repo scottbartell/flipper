@@ -97,11 +97,13 @@ module Flipper
       end
 
       def get_all
-        rows = ::ActiveRecord::Base.connection.select_all <<-SQL
-          SELECT ff.key AS feature_key, fg.key, fg.value
-          FROM #{@feature_class.table_name} ff
-          LEFT JOIN #{@gate_class.table_name} fg ON ff.key = fg.feature_key
-        SQL
+        rows = ::ActiveRecord::Base.connection_pool.with_connection do |connection|
+          connection.select_all <<-SQL
+            SELECT ff.key AS feature_key, fg.key, fg.value
+            FROM #{@feature_class.table_name} ff
+            LEFT JOIN #{@gate_class.table_name} fg ON ff.key = fg.feature_key
+          SQL
+        end
         db_gates = rows.map { |row| Gate.new(row) }
         grouped_db_gates = db_gates.group_by(&:feature_key)
         result = Hash.new { |hash, key| hash[key] = default_config }
